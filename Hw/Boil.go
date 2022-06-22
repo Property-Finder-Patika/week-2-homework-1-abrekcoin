@@ -9,5 +9,6 @@ fmt.Printf("boiling point of alcohol = %g°F or %g°C\n", f, c)
 
 // Output:
 // boiling point = 212°F or 100°C
+ 
 
 }
