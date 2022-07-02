@@ -1,6 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"os"
+	"strconv"
+	"strings"
+	"unicode/utf8"
+)
 
 func main() {
 	//8.1
@@ -69,4 +76,58 @@ func main() {
 
 	//8.7
 
+	var (
+		radius = 10.
+		area   float64
+	)
+	area = math.Pi * radius * radius
+
+	fmt.Printf("radius: %g -> area: %g\n", radius, area)
+
+	//8.8
+
+	var (
+		spradius, sparea float64
+	)
+
+	spradius, _ = strconv.ParseFloat(os.Args[1], 64)
+
+	sparea = 4 * math.Pi * spradius * spradius
+	// sparea = 4 * math.Pi * math.Pow(radius, 2)
+
+	fmt.Printf("Radius is %1.f Area is %1.f", spradius, sparea)
+	/////////////example output = Radius is 34 Area is 14527/////
+
+	//8.9
+
+	var spvradius, spvvol float64
+
+	spvradius, _ = strconv.ParseFloat(os.Args[1], 64)
+
+	spvvol = (4 * math.Pi * math.Pow(spvradius, 3)) / 3
+
+	fmt.Printf("radius: %g -> volume: %.2f\n", spvradius, spvvol)
+	//output radius: 34 -> volume: 164636
+	//8.2.1
+	json := `
+{
+	"Items": [{
+		"Item": {
+			"name": "Teddy Bear"
+		}
+	}]
+}`
+	fmt.Println(json)
+
+	// 8.2.4 //it print thr lengt of given string (even if include turkish characters)
+	length := utf8.RuneCountInString(os.Args[1])
+	fmt.Println(length)
+
+	//8.2.6
+	fmt.Println(strings.ToLower(os.Args[1]))
+
+	//8.2.7 sPACE TRİMMER
+
+	fmt.Println(strings.TrimSpace(json))
+	//
 }
